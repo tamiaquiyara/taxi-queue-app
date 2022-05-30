@@ -11,6 +11,9 @@ const passengerCount = document.querySelector(".passenger_queue_count");
 const taxiCount = document.querySelector(".taxi_queue_count")
 // create Factory Function instance
 
+const currentPassengers = localStorage.getItem("passenger_count");
+const currentTaxis = localStorage.getItem("taxi_join");
+
 const taxiQueue = TaxiQueue();
 
 // DOM events
@@ -18,18 +21,24 @@ join.addEventListener("click", function(){
     // alert(join);
     taxiQueue.joinQueue()
     passengerCount.innerHTML = taxiQueue.queueLength();
+
+    localStorage.setItem("passenger_count", taxiQueue.queueLength());
 });
 
 leave.addEventListener("click", function(){
     // alert(leave);
     taxiQueue.leaveQueue()
     passengerCount.innerHTML = taxiQueue.queueLength();
+
+    localStorage.setItem("passenger_count", taxiQueue.queueLength());
 });
 
 taxiJoin.addEventListener("click", function(){
     // alert(taxiJoin);
     taxiQueue.joinTaxiQueue()
     taxiCount.innerHTML = taxiQueue.taxiQueueLength();
+
+    localStorage.setItem("taxi_join", taxiQueue.taxiQueueLength());
 });
 
 taxiLeave.addEventListener("click", function(){
@@ -37,5 +46,8 @@ taxiLeave.addEventListener("click", function(){
     taxiQueue.taxiDepart()
     taxiCount.innerHTML = taxiQueue.taxiQueueLength();
     passengerCount.innerHTML = taxiQueue.queueLength();
+
+    localStorage.setItem("taxi_join", taxiQueue.taxiQueueLength());
+    localStorage.setItem("passenger_count", taxiQueue.queueLength());
 })
 
