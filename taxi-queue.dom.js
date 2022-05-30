@@ -15,22 +15,27 @@ const taxiQueue = TaxiQueue();
 
 // DOM events
 join.addEventListener("click", function(){
-    alert(join);
-    passengerCount.innerHTML = taxiQueue(join.value);
+    // alert(join);
+    taxiQueue.joinQueue()
+    passengerCount.innerHTML = taxiQueue.queueLength();
 });
 
 leave.addEventListener("click", function(){
-    alert(leave);
-    passengerCount.innerHTML = taxiQueue(leave.value);
+    // alert(leave);
+    taxiQueue.leaveQueue()
+    passengerCount.innerHTML = taxiQueue.queueLength();
 });
 
 taxiJoin.addEventListener("click", function(){
-    alert(taxiJoin);
-    taxiCount.innerHTML = taxiQueue(taxiJoin.value);
+    // alert(taxiJoin);
+    taxiQueue.joinTaxiQueue()
+    taxiCount.innerHTML = taxiQueue.taxiQueueLength();
 });
 
 taxiLeave.addEventListener("click", function(){
-    alert(taxiLeave);
-    
+    // alert(taxiLeave);
+    taxiQueue.taxiDepart()
+    taxiCount.innerHTML = taxiQueue.taxiQueueLength();
+    passengerCount.innerHTML = taxiQueue.queueLength();
 })
 
